@@ -1,0 +1,24 @@
+<% layout('index') %>
+<% block('stylesheets').append('') %>
+
+<h1>Blog Posts</h1>
+<a href="/add">Add New Post</a>
+<% if(err !== "none"){%>
+<p style="color:red">Was unable to <%= err%> the post</p>
+<%}%>
+<% for(var i = 0; i < posts.length; ++i) {%>
+<article>
+    <h2 class="blog-title"><a href="/posts/<%= posts[i].id%>"><%= posts[i].title %></a></h2>
+    <div>
+        <h3><%= posts[i].author %></h3>
+        <h4><%= posts[i].created %></h4>
+    </div>
+    <p class="blog-content"><%= posts[i].content %></p>
+    <ul>
+        <li><a href="/<%= posts[i].id%>">Edit</a></li>
+        <li><form action="/delete/<%= posts[i].id%>" method="post"><button class="delete-button" type="submit">Delete</button></form></li>
+    </ul>
+</article>
+<%}%>
+
+<% block('scripts').append('') %>

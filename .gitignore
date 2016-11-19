@@ -1,1 +1,4 @@
 https://www.gitignore.io/api/node,osx
+.idea
+node_modules
+.DS_store

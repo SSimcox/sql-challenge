@@ -1,0 +1,12 @@
+<% layout('index') %>
+<% block('stylesheets').append('') %>
+
+<h1>Edit Post</h1>
+<form action="/<%= post.id %>" method="post">
+    <input id="author" type="text" name="author" value="<%= post.author%>"/>
+    <input id="title" type="text" name="title" value="<%= post.title%>"/>
+    <textarea id="content" name="content" placeholder="Write post here" rows="10"><%= post.content%></textarea>
+    <button type="submit">Submit</button>
+</form>
+
+<% block('scripts').append('') %>

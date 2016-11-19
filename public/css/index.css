@@ -1,0 +1,77 @@
+body{
+    color: brown;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+article{
+    width: 70%;
+    flex:1 70%;
+    margin: 5px auto;
+    border: 2px solid brown;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+div{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+h2{
+    flex: 1 100%;
+    margin:0;
+    padding: 15px auto;
+    text-align: center;
+}
+
+h3, h4{
+    flex: 1 50%;
+    text-align: left;
+}
+h4{
+    text-align: right;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0;
+    padding: 10px auto;
+    background-color: #a5bfbf;
+}
+
+li{
+    margin-right: 5px;
+}
+
+a,a:active{
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-title, .blog-content{
+    background-color: #a5bfbf;
+    margin: 0;
+    padding: 0 auto;
+}
+
+form{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 60%;
+    margin: 0 auto;
+}
+input{
+    flex: 1 50%;
+}
+
+.delete-button{
+    background: inherit;
+    border: inherit;
+    width: fit-content;
+    color: brown;
+}

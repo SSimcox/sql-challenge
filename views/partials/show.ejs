@@ -1,0 +1,13 @@
+<% layout('index') %>
+<% block('stylesheets').append('') %>
+<a href="/">Home</a>
+<article>
+    <h1><%= post.title%></h1>
+    <div>
+        <h3><%= post.author%></h3>
+        <h4><%= post.created%></h4>
+    </div>
+    <p><%= post.content%></p>
+</article>
+
+<% block('scripts').append('') %>
