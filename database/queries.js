@@ -36,13 +36,10 @@ function getPost(req,res,next){
 
 function updatePost(req,res,next){
     var id = parseInt(req.params.id);
-    console.log(id);
     db.none('update posts set title=$1, content=$2 where id=$3', [req.body.title, req.body.content, id])
         .then(function(){
-            console.log("Updated Database");
             next();
         }).catch(function(err){
-        console.log(err);
         next(err);
     })
 }
@@ -50,7 +47,6 @@ function updatePost(req,res,next){
 function deletePost(req,res,next){
     db.result('delete from posts where id=$1', req.params.id)
         .then(function(result){
-            console.log(result);
             next();
         }).catch(function(err){
         next(err);
