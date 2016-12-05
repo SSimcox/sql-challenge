@@ -6,7 +6,7 @@ var db = require('../database/queries');
 route.get('/',db.getAllPosts,getAllPostsFail,getAllPostsSuccess);
 
 function getAllPostsSuccess(req,res,next){
-    req.my_data.sort(function(a,b){return(a.created.valueOf() - b.created.valueOf())});
+    //req.my_data.sort(function(a,b){return(a.created.valueOf() - b.created.valueOf())});
     for(var i = 0; i < req.my_data.length; ++i){
         req.my_data[i].created = moment(req.my_data[i].created).format('MMM Do YYYY');
     }
@@ -20,28 +20,12 @@ function getAllPostsFail(err,req,res,next){
     res.render('partials/index-fill', {posts:[], err:myerr});
 }
 
-route.get('/add',function(req,res){
-    res.render('partials/add');
-});
-
-route.post('/add', db.addPost,addPostFail,addPostSuccess);
-
-function addPostSuccess(req,res,next){
-    res.redirect('/');
-}
-function addPostFail(err,req,res,next){
-    res.redirect('/?err=add');
-}
-
 route.get('/posts/:id', db.getPost,getPostFail,getViewPostSuccess);
 
 function getViewPostSuccess(req,res,next){
     req.my_data.created = moment(req.my_data.created).format('MMM Do YYYY');
 
     res.render('partials/show', {post:req.my_data});
-}
-function getPostFail(err,req,res,next){
-    res.redirect('/?err=get');
 }
 
 route.get('/:id', db.getPost, getPostFail, getPostSuccess);

@@ -16,9 +16,9 @@
     <p class="blog-content"><%= posts[i].content %></p>
     <ul>
         <li><a href="/<%= posts[i].id%>">Edit</a></li>
-        <li><form action="/delete/<%= posts[i].id%>" method="post"><button class="delete-button" type="submit">Delete</button></form></li>
+        <li><form id="<%= posts[i].id%>" action="/delete/<%= posts[i].id%>" method="post" onclick="deleteThis(<%= posts[i].id%>)">Delete</form></li>
     </ul>
 </article>
 <%}%>
 
-<% block('scripts').append('') %>
+<% block('scripts').append('<script type="text/javascript" src="/public/js/delete.js"></script>') %>

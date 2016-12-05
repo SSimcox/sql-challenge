@@ -8,9 +8,9 @@
         <script type="text/javascript" src="/public/js/jquery-3.1.1.js"></script>
         <link href="/public/css/index.css" rel="stylesheet">
         <%= block('stylesheets').toString() %>
+        <%- block('scripts').toString() %>
     </head>
     <body>
         <%- body %>
-        <%- block('scripts').toString() %>
     </body>
 </html>

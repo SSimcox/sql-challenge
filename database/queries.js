@@ -1,12 +1,17 @@
 /**
  * Created by Steven on 11/18/2016.
  */
-var pgp = require('pg-promise')();
+var promise = require('bluebird');
+var options = {
+    // Initialization Options
+    promiseLib: promise
+};
+var pgp = require('pg-promise')(options);
 var connectionString = 'postgres://postgres:@localhost:5432/blog';
 var db = pgp(connectionString);
 
 function getAllPosts(req,res,next){
-    db.any('select * from posts')
+    db.any('select * from posts order by created')
         .then(function(data){
             req.my_data = data;
             next();
@@ -36,6 +41,7 @@ function getPost(req,res,next){
 
 function updatePost(req,res,next){
     var id = parseInt(req.params.id);
+    console.log(req.body.content);
     db.none('update posts set title=$1, content=$2 where id=$3', [req.body.title, req.body.content, id])
         .then(function(){
             next();
